@@ -1,34 +1,35 @@
-// Coffee: price_1LnUTFDM1jwCEz8OGoOSXiSM
-// Sunglasses: price_1LnUTxDM1jwCEz8OAqHYTwKQ
-// Camera: price_1LnUUoDM1jwCEz8OvxIcJ7to
+import { ProductType } from "../types/ProductType";
 
-const productsArray = [
-    {
-        id: "price_1LnUTFDM1jwCEz8OGoOSXiSM",
-        title: "Coffee",
-        price: 4.99
-    },
-    {
-        id: "price_1LnUTxDM1jwCEz8OAqHYTwKQ",
-        title: "Sunglasses",
-        price: 9.99
-    },
-    {
-        id: "price_1LnUUoDM1jwCEz8OvxIcJ7to",
-        title: "Camera",
-        price: 39.99
-    }
+const productsArray: ProductType[] = [
+  {
+    id: "1",
+    title: "Xiomi Redmi Note 10 Pro",
+    price: 300.99,
+    image: "https://via.placeholder.com/150"
+  },
+  {
+    id: "2",
+    title: "Iphone 12 Pro Max",
+    price: 599.99,
+    image: "https://via.placeholder.com/150"
+  },
+  {
+    id: "3",
+    title: "Samsung Galaxy S21 Ultra",
+    price: 399.99,
+    image: "https://via.placeholder.com/150"
+  }
 ];
 
-function getProductData(id) {
-    let productData = productsArray.find(product => product.id === id);
+function getProductData(id: string) {
+  const productData = productsArray.find(product => product.id === id);
 
-    if (productData == undefined) {
-        console.log("Product data does not exist for ID: " + id);
-        return undefined;
-    }
+  if (productData == undefined) {
+    console.log("Product data does not exist for ID: " + id);
+    return undefined;
+  }
 
-    return productData;
+  return productData;
 }
 
 export { productsArray, getProductData };
