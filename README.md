@@ -5,10 +5,11 @@
 ![Home](./screenshots/1.png)
 
 
-A simple online cell phone store using stripe as a payment gateway.
+### A simple online cell phone store using stripe as a payment gateway.
 
 </div>
 
+<br />
 
 # Tecnologies
 
@@ -17,9 +18,11 @@ A simple online cell phone store using stripe as a payment gateway.
 - Vite
 - React.js
 - TypeScript
+- Bootstrap
 
 ### Backend
 
 - Node.js
 - Express
 - TypeScript
+- Stripe

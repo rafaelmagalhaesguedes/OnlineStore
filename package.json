@@ -1,0 +1,17 @@
+{
+  "name": "storewithstripe",
+  "version": "1.0.0",
+  "description": "A simple store with stripe",
+  "main": "index.js",
+  "scripts": {
+    "install:front": "cd ./frontend && npm install",
+    "install:back": "cd ./backend && npm install",
+    "install:apps": "npm run install:front && npm run install:back",
+    "compose:up": "cd backend && docker-compose up -d --build",
+    "compose:down": "cd backend && docker-compose down --remove-orphans",
+    "dev": "cd frontend && npm run dev"
+  },
+  "keywords": [],
+  "author": "Rafael Magalhães Guedes",
+  "license": "ISC"
+}
