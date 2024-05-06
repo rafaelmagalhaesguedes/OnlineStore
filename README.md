@@ -29,6 +29,22 @@
 - TypeScript
 - Stripe
 
+<br />
+
+## Run Project
+
+1. clone project
+
+2. cd project
+
+3. npm run install:apps
+
+4. npm run compose:up
+
+5. npm run dev
+
+<br />
+
 ## ScreenShots
 
 <br />
