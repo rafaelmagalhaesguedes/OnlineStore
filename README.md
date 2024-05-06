@@ -2,6 +2,8 @@
 
 # Simple Store With Stripe Payment Gateway
 
+<br />
+
 ![Home](./screenshots/1.png)
 
 
@@ -26,3 +28,21 @@
 - Express
 - TypeScript
 - Stripe
+
+## ScreenShots
+
+<br />
+
+![Home](./screenshots/1.png)
+
+<br />
+
+![Home](./screenshots/2.png)
+
+<br />
+
+![Home](./screenshots/3.png)
+
+<br />
+
+![Home](./screenshots/4.png)
