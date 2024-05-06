@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CartProvider from './context/CartProvider';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Header } from './components/Header';
 import { Container } from 'react-bootstrap';
 import { Success } from './pages/Success';
 import { Cancel } from './pages/Cancel';
@@ -10,6 +10,7 @@ function App() {
   return (
     <CartProvider>
       <Container>
+        <Header />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -19,7 +20,7 @@ function App() {
         </BrowserRouter>
       </Container>
     </CartProvider>
-  )
+  );
 }
 
 export default App;

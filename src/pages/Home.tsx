@@ -5,7 +5,7 @@ import { ProductCard } from '../components/ProductCard';
 export function Home() {
   return (
     <>
-      <h1 className="p-3">Welcome to the store!</h1>
+      <h1 className="p-3" style={ { textAlign: 'center'} }>Welcome to the store!</h1>
       <Row xs={ 1 } md={ 2 } lg={ 3 } className="g-4">
         {productsArray.map((product, idx) => (
           <Col align="center" key={ idx }>
@@ -14,5 +14,5 @@ export function Home() {
         ))}
       </Row>
     </>
-  )
+  );
 }

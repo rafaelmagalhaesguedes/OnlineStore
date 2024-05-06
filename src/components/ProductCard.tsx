@@ -14,7 +14,7 @@ export function ProductCard(product: ProductCardProps) {
 
   return (
     <Card>
-      <Card.Img variant="top" src={ image } style={ { alignSelf: 'center', width: '250px', height: '300px' }} />
+      <Card.Img className="m-2" variant="top" src={ image } style={ { alignSelf: 'center', width: '250px', height: '300px' }} />
       <Card.Body>
         <Card.Title>{ name }</Card.Title>
         <Card.Text>${ price }</Card.Text>

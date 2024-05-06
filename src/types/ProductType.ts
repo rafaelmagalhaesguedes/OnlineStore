@@ -3,5 +3,5 @@ export type ProductType = {
   name: string;
   price: number;
   image: string;
-  quantity?: number;
+  quantity?: number | undefined;
 };
