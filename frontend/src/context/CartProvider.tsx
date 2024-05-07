@@ -4,7 +4,8 @@ import { ProductType } from '../types/ProductType';
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [cartProducts, setCartProducts] = useState<ProductType[]>([]);
+  const localCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const [cartProducts, setCartProducts] = useState<ProductType[]>(localCart);
 
   const addOneToCart = (id: string) => {
     const product = products.find(product => product.id === id);
@@ -14,10 +15,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     
     if (productIndex === -1) {
       setCartProducts([...cartProducts, { ...product, quantity: 1 }]);
+      localStorage.setItem('cart', JSON.stringify([...cartProducts, { ...product, quantity: 1 }]));
     } else {
       const updatedCartProducts = [...cartProducts];
       updatedCartProducts[productIndex].quantity = updatedCartProducts[productIndex].quantity! + 1;
       setCartProducts(updatedCartProducts);
+      localStorage.setItem('cart', JSON.stringify(updatedCartProducts));
     }
   };
 
@@ -32,11 +35,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       updatedCartProducts.splice(productIndex, 1);
     }
     setCartProducts(updatedCartProducts);
+    localStorage.setItem('cart', JSON.stringify(updatedCartProducts));
   };
 
   const deleteFromCart = (id: string) => {
     const updatedCartProducts = cartProducts.filter(product => product.id !== id);
     setCartProducts(updatedCartProducts);
+    localStorage.setItem('cart', JSON.stringify(updatedCartProducts));
   };
 
   const getProductById = (id: string) => {
