@@ -2,9 +2,35 @@ version: "3"
 
 services:
   node:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: node
+    build: .
+    container_name: backend
+    command: run dev
+    working_dir: /backend
+    volumes:
+      - ./src:/app-backend/src
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
-      - "3001:3001"
+      - 3001:3001
+    environment:
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_NAME: store_db
+      DB_PORT: 3306
+      JWT_SECRET: secretKey
+
+  db:
+    container_name: db
+    image: mysql:8.0.32
+    restart: always
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
+      timeout: 10s
+      retries: 5
