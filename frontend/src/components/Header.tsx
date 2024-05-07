@@ -15,10 +15,9 @@ export function Header() {
   const checkout = async () => {
     try {
       const response = await productService.checkout(cart.items);
-      const data = await response.json();
   
-      if(data.url) {
-        window.location.assign(data.url);
+      if(response.url) {
+        window.location.assign(response.url);
       }
     } catch (error) {
       console.error("Error during checkout:", error);
