@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import { CartContext } from './CartContext';
 import { ProductType } from '../types/ProductType';
-import { getProductData } from '../utils/productStore';
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [cartProducts, setCartProducts] = useState<ProductType[]>([]);
 
-  const getProductQuantity = (id: string) => {
-    const product = cartProducts.find(product => product.id === id);
-    return product?.quantity || 0;
-  };
-
   const addOneToCart = (id: string) => {
-    const product = getProductData(id);
+    const product = products.find(product => product.id === id);
     if (!product) return;
 
     const productIndex = cartProducts.findIndex(product => product.id === id);
@@ -44,6 +39,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCartProducts(updatedCartProducts);
   };
 
+  const getProductById = (id: string) => {
+    return products.find(product => product.id === id);
+  }
+
+  const getProductQuantity = (id: string) => {
+    const product = cartProducts.find(product => product.id === id);
+    return product?.quantity || 0;
+  };
+
   const getTotalCost = () => {
     return cartProducts.reduce((total, product) => {
       return total + (product.price * product.quantity!);
@@ -52,11 +56,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const contextValue = {
     items: cartProducts,
-    getProductQuantity,
+    products,
+    setProducts,
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
-    getTotalCost
+    getProductById,
+    getProductQuantity,
+    getTotalCost,
   }
 
   return (

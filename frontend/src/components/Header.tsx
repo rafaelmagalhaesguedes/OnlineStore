@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { CartProduct } from './CartProduct';
 import { FaBoxOpen, FaShoppingCart } from 'react-icons/fa';
+import productService from '../services/ApiService';
 
 export function Header() {
   const cart = useContext(CartContext);
@@ -13,14 +14,7 @@ export function Header() {
 
   const checkout = async () => {
     try {
-      const response = await fetch('http://localhost:3001/checkout', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({items: cart.items})
-      });
-  
+      const response = await productService.checkout(cart.items);
       const data = await response.json();
   
       if(data.url) {
