@@ -1,12 +1,15 @@
-import express, { Request, Response } from 'express';
-import cors from 'cors';
+import * as express from 'express';
+import { Request, Response } from 'express';
+import * as cors from 'cors';
 import Stripe from 'stripe';
+import router from './routes';
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(router);
 
-const stripe = new Stripe('sk_test_51OnPHdGl8SYs9Zeb4imsDTH1Evs5XnKhEvescwRP3uAuqzN9FItpl8XqESRt0Ha07JDgGvfxvzNGRf0O4ndQy2FZ00Rm3p9ShK');
+const stripe = new Stripe(process.env.STRIPE_SECRET as string);
 
 app.get('/', (_req, res) => {
   res.send('Hello World!');
