@@ -1,5 +1,4 @@
 import { ICheckOutBody, ICheckOutURL } from '../interfaces/CheckOut/ICheckOut';
-import { ICheckOutService } from '../interfaces/CheckOut/ICheckOutService';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET as string);
@@ -7,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET as string);
 const URL_SUCCESS = "http://localhost:5173/success";
 const URL_CANCEL = "http://localhost:5173/cancel";
 
-export class CheckOutService implements ICheckOutService {
+export class CheckOutService {
 
   async createStripeSession(items: ICheckOutBody[]): Promise<ICheckOutURL> {
     let lineItems: ICheckOutBody[] = [];

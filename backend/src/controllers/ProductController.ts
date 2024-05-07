@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
 import { statusCode } from '../utils/httpStatusCodeMap';
 import { ProductService } from '../services/ProductService';
-import { IProductController } from '../interfaces/Product/IProductController';
 
-export class ProductController implements IProductController {
+export class ProductController {
   
   constructor(private productService: ProductService) {}
 
