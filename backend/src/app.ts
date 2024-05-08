@@ -1,18 +1,39 @@
-import * as express from 'express';
-import * as cors from 'cors';
-import router from './routes';
+import express = require('express');
+import { MainRoutes } from './routes';
 
-const PORT = process.env.PORT || 3001;
+class App {
+  public app: express.Express;
+  private mainRoutes = new MainRoutes();
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-app.use(router);
+  constructor() {
+    this.app = express();
+    this.mainRoutes = new MainRoutes();
+    this.config();
+    this.routes();
+  }
 
-app.get('/', (_req, res) => {
-  res.send('Health check ok');
-});
+  private config():void {
+    const accessControl: express.RequestHandler = (_req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
+      res.header('Access-Control-Allow-Headers', '*');
+      next();
+    };
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-});
+    this.app.use(express.json());
+    this.app.use(accessControl);
+  }
+
+  private routes(): void {
+    this.app.use(this.mainRoutes.router);
+  }
+
+  public start(PORT: string | number):void {
+    this.app.listen(PORT, () => 
+      console.log(`Server running on port: ${PORT}!`));
+  }
+}
+
+export { App };
+
+export const { app } = new App();
