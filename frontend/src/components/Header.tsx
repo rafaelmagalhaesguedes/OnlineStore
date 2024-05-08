@@ -35,10 +35,16 @@ export function Header() {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Button variant="warning" onClick={ handleShow } style={ { display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Button variant="primary" onClick={ handleShow } style={ { display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <FaShoppingCart size={ 30 } /> My Cart
             ({ productsCount })
           </Button>
+          <Navbar.Text>
+            <a href="/login" style={ { fontWeight: '500', color: 'white', marginLeft: '3rem', textDecoration: 'none' } }>Login</a>
+          </Navbar.Text>
+          <Navbar.Text>
+            <a href="/register" style={ { fontWeight: '500', color: 'white', marginLeft: '1rem', textDecoration: 'none' } }>Register</a>
+          </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
 

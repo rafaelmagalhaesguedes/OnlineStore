@@ -17,8 +17,7 @@ export function Home() {
 
   return (
     <>
-      <h1 className="p-3" style={ { textAlign: 'center'} }>Welcome to the store!</h1>
-      <Row xs={ 1 } md={ 2 } lg={ 3 } className="g-4">
+      <Row xs={ 1 } md={ 2 } lg={ 3 } className="g-4 p-4">
         {products && products.map((product, idx) => (
           <Col align="center" key={ idx }>
             <ProductCard product={ product } />

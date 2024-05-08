@@ -9,7 +9,7 @@ import { Home } from './pages/Home';
 function App() {
   return (
     <CartProvider>
-      <Container>
+      <Container fluid>
         <Header />
         <BrowserRouter>
           <Routes>
