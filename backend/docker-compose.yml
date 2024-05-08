@@ -15,9 +15,9 @@ services:
       - 3001:3001
     environment:
       DB_USER: root
-      DB_PASSWORD: password
+      DB_PASSWORD: root
       DB_HOST: db
-      DB_NAME: store_db
+      DB_NAME: auth_db
       DB_PORT: 3306
       JWT_SECRET: secretKey
 
@@ -29,7 +29,7 @@ services:
       - 3306:3306
       - 33060:33060
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: root
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
       timeout: 10s
