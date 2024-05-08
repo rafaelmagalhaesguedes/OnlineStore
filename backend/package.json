@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app",
+  "main": "src/server",
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "dev": "tsnd --watch \"./src/**\" ./src/app.ts",
+    "start": "ts-node src/server.ts",
+    "dev": "tsnd --watch \"./src/**\" ./src/server.ts",
     "predev": "npm run db:reset",
     "test": "mocha -r ts-node/register tests/**/**/*.test.ts --exit -t 60000 --exit",
     "test:coverage": "nyc mocha -r ts-node/register tests/**/**/*.test.ts --exit -t 60000",

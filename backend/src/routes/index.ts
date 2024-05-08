@@ -1,11 +1,19 @@
-// index.ts
 import { Router } from 'express';
-import productRoutes from './ProductRoutes';
-import checkoutRoutes from './CheckOutRoutes';
+import CheckOutRoutes from './CheckOutRoutes';
+import ProductRoutes from './ProductRoutes';
 
-const router = Router();
+class MainRoutes {
+  public router: Router;
 
-router.use('/product', productRoutes);
-router.use('/checkout', checkoutRoutes);
+  constructor() {
+    this.router = Router();
+    this.initializeRoutes();
+  }
+ 
+  private initializeRoutes() {
+    this.router.use('/product', ProductRoutes);
+    this.router.use('/checkout', CheckOutRoutes);
+  }
+}
 
-export default router;
+export { MainRoutes };

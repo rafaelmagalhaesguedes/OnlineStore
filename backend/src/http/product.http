@@ -1,0 +1,34 @@
+###
+### Get all products
+GET http://localhost:3001/product
+
+### Get product by id
+GET http://localhost:3001/product/4
+
+
+### Create product
+POST http://localhost:3001/product
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "price": 100,
+    "priceId": "price_1JGK5vK5J9Q5Q5Q5Q5Q5Q5Q5",
+    "quantity": 100,
+    "image": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+}
+
+### Update product
+PUT http://localhost:3001/product/4
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "price": 100,
+    "priceId": "price_1JGK5vK5J9Q5Q5Q5Q5Q5Q5Q5",
+    "quantity": 500,
+    "image": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+}
+
+### Delete product
+DELETE http://localhost:3001/product/4
