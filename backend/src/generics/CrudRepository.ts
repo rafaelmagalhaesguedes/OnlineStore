@@ -36,7 +36,7 @@ export class CrudRepository<T> implements ICrudModel<T> {
 
     if (!item) return null;
 
-    return item;
+    return item.dataValues;
   }
 
   async create(item: T): Promise<T | null> {

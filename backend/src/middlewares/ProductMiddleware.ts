@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import {
   requestBodySchema,
   requestParamsSchema,
@@ -16,7 +16,7 @@ export class ProductMiddleware {
   /**
    * Validate request body
    */
-  public static validateRequestBody(req: Request, res: Response, next: Function) {
+  public static validateRequestBody(req: Request, res: Response, next: NextFunction) {
     const { name, price, priceId, quantity, image } = req.body;
 
     const { error } = requestBodySchema.validate({ name, price, priceId, quantity, image });
@@ -31,7 +31,7 @@ export class ProductMiddleware {
   /**
    * Validate request params
    */
-  public static validateRequestParams(req: Request, res: Response, next: Function) {
+  public static validateRequestParams(req: Request, res: Response, next: NextFunction) {
     const { id } = req.params;
 
     const { error } = requestParamsSchema.validate({ id });
@@ -46,7 +46,7 @@ export class ProductMiddleware {
   /**
    * Validate update request body
    */
-  public static validateUpdateRequestBody(req: Request, res: Response, next: Function) {
+  public static validateUpdateRequestBody(req: Request, res: Response, next: NextFunction) {
     const { name, price, priceId, quantity, image } = req.body;
 
     const { error } = updateRequestBodySchema.validate({ name, price, priceId, quantity, image });

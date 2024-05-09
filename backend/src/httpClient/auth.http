@@ -1,0 +1,14 @@
+### Login
+POST http://localhost:3001/auth
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "secret_admin"
+}
+
+
+### Get role
+GET http://localhost:3001/auth/role
+Content-Type: application/json
+Authorization: Bearer <token>

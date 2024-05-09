@@ -1,8 +1,17 @@
 import { Router } from 'express';
-import CheckOutRoutes from './CheckOutRoutes';
+import UserRoutes from './UserRoutes';
+import AuthRoutes from './AuthRoutes';
 import ProductRoutes from './ProductRoutes';
+import CheckOutRoutes from './CheckOutRoutes';
 
-class MainRoutes {
+/**
+ * MainRoutes
+ * 
+ * @export
+ * @class MainRoutes
+ * @return {Router}
+ */
+export class MainRoutes {
   public router: Router;
 
   constructor() {
@@ -11,9 +20,9 @@ class MainRoutes {
   }
  
   private initializeRoutes() {
+    this.router.use('/user', UserRoutes);
+    this.router.use('/auth', AuthRoutes);
     this.router.use('/product', ProductRoutes);
     this.router.use('/checkout', CheckOutRoutes);
   }
 }
-
-export { MainRoutes };

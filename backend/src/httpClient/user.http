@@ -1,0 +1,38 @@
+### GET Users
+GET http://localhost:3001/user
+Content-Type: application/json
+
+
+### GET User by ID
+GET http://localhost:3001/user/1
+Content-Type: application/json
+
+
+### POST User
+POST http://localhost:3001/user
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "email": "rafa@email.com",
+    "password": "123456",
+    "role": "admin",
+    "image": "image.jpg"
+}
+
+
+### PUT User
+PUT http://localhost:3001/user/4
+Content-Type: application/json
+
+{
+    "username": "user1",
+    "email": "andre@user.com",
+    "password": "123456",
+    "role": "user",
+    "image": "image.jpg"
+}
+
+
+### DELETE User
+DELETE http://localhost:3001/user/4

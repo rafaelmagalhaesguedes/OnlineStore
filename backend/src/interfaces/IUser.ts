@@ -19,4 +19,4 @@ export interface IUserRole {
   role: string;
 }
 
-export type IUserWithoutPassword = Omit<IUser, 'password'>;
+export type IUserResponse = Omit<IUser, 'password'>;
