@@ -2,7 +2,15 @@ import { SequelizeUser } from '../database/models/SequelizeUser';
 import { CrudRepository } from '../generics/CrudRepository';
 import { IUser, IUserResponse } from '../interfaces/IUser';
 
+/**
+ * UserModel
+ * 
+ * @export
+ * @class UserModel
+ * @extends {CrudRepository<IUser>}
+ */
 export class UserModel extends CrudRepository<IUser> {
+  
   constructor() {
     super(SequelizeUser);
   }

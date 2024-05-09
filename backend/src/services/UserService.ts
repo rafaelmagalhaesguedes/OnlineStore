@@ -24,7 +24,22 @@ export class UserService {
    * @memberof UserService
    */
   async getUsers(): Promise<ServiceResponse<IUserResponse[]>> {
-    const users = await this.userModel.findAll();
+    const users = await this.userModel.findAll({
+      include: [
+      {
+        association: 'customer',
+        as: 'customer',
+        include: [
+        {
+          association: 'addresses',
+          as: 'addresses',
+        },
+        {
+          association: 'orders',
+          as: 'orders',
+        }]
+      }]
+    });
 
     if (users === null) {
       return { status: 'NOT_FOUND', data: { message: 'Users not found' } };

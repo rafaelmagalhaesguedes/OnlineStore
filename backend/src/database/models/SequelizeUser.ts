@@ -8,6 +8,7 @@ import {
 } from 'sequelize';
 import db from '.';
 import * as bcrypt from 'bcryptjs';
+import { SequelizeCustomer } from './SequelizeCustomer';
 
 class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
   InferCreationAttributes<SequelizeUser>> {
@@ -69,6 +70,16 @@ SequelizeUser.init({
       }
     },
   },
+});
+
+SequelizeUser.hasOne(SequelizeCustomer, {
+  foreignKey: 'userId',
+  as: 'customer',
+});
+
+SequelizeCustomer.belongsTo(SequelizeUser, {
+  foreignKey: 'userId',
+  as: 'user',
 });
 
 export { SequelizeUser };

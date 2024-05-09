@@ -2,8 +2,9 @@
  * Interface for CRUD operations
  */
 export interface ICrudModel<T> {
-  findAll(): Promise<T[] | null>;
+  findAll(options?: any): Promise<T[] | null>;
   findById(id: number): Promise<T | null>;
+  findOne(options: any): Promise<T | null>;
   create(item: T): Promise<T | null>;
   update(id: number, item: T): Promise<T | null>;
   delete(id: number): Promise<boolean>;
@@ -23,8 +24,8 @@ export class CrudRepository<T> implements ICrudModel<T> {
 
   constructor(private model: any) {}
 
-  async findAll(): Promise<T[] | null> {
-    const items = await this.model.findAll();
+  async findAll(options?: object): Promise<T[] | null> {
+    const items = await this.model.findAll(options);
 
     if (!items) return null;
 
@@ -33,6 +34,14 @@ export class CrudRepository<T> implements ICrudModel<T> {
 
   async findById(id: number): Promise<T | null> {
     const item = await this.model.findByPk(id);
+
+    if (!item) return null;
+
+    return item.dataValues;
+  }
+
+  async findOne(options: any): Promise<T | null> {
+    const item = await this.model.findOne(options);
 
     if (!item) return null;
 

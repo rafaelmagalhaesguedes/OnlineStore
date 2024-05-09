@@ -52,6 +52,7 @@ SequelizeCustomer.init({
   underscored: true,
 });
 
+
 SequelizeCustomer.hasMany(SequelizeAddress, {
   foreignKey: 'customerId',
   as: 'addresses',
