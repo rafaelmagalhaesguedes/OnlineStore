@@ -1,6 +1,10 @@
 import { JwtService } from '../services/JwtService';
 import { NextFunction, Request, Response } from 'express';
-import { requestBodySchema } from '../middlewares/validateSchemas/authSchemas';
+import {
+  requestAuthSchema,
+  requestForgotPasswordSchema,
+  requestResetPasswordSchema,
+} from '../middlewares/validateSchemas/authSchemas';
 
 /**
  * Auth Middleware
@@ -33,12 +37,40 @@ export class AuthMiddleware {
 
 
   /**
-   * Validate request body
+   * Validate request Auth body
    */
-  static validateRequestBody(req: Request, res: Response, next: NextFunction) {
-    const { error } = requestBodySchema.validate(req.body);
+  static validateAuthBody(req: Request, res: Response, next: NextFunction) {
+    const { error } = requestAuthSchema.validate(req.body);
 
     if (error) return res.status(400).json({ message: error.message });
+
+    next();
+  }
+
+
+  /**
+   * Validate request Forgot Password body
+   */
+  static validateForgotPasswordBody(req: Request, res: Response, next: NextFunction) {
+    const { error } = requestForgotPasswordSchema.validate(req.body);
+
+    if (error) {
+      return res.status(400).json({ message: error.message });
+    }
+
+    next();
+  }
+
+
+  /**
+   * Validate request Reset Password body
+   */
+  static validateResetPasswordBody(req: Request, res: Response, next: NextFunction) {
+    const { error } = requestResetPasswordSchema.validate(req.body);
+
+    if (error) {
+      return res.status(400).json({ message: error.message });
+    }
 
     next();
   }

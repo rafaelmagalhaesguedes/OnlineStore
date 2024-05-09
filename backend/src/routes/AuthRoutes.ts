@@ -23,7 +23,7 @@ export class AuthRoutes {
   private initializeRoutes() {
     this.router.post(
       '/',
-      AuthMiddleware.validateRequestBody,
+      AuthMiddleware.validateAuthBody,
       (req: Request, res: Response) => this.authController.authenticate(req, res),
     );
 
@@ -31,6 +31,18 @@ export class AuthRoutes {
       '/role',
       AuthMiddleware.validateToken,
       (req: Request, res: Response) => this.authController.getUserRole(req, res),
+    );
+
+    this.router.post(
+      '/forgot-password',
+      AuthMiddleware.validateForgotPasswordBody,
+      (req: Request, res: Response) => this.authController.forgotPassword(req, res),
+    );
+
+    this.router.post(
+      '/reset-password',
+      AuthMiddleware.validateResetPasswordBody,
+      (req: Request, res: Response) => this.authController.resetPassword(req, res),
     );
   }
 }
