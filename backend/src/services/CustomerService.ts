@@ -24,6 +24,7 @@ export class CustomerService {
    * @returns {Promise<ICustomer[]>}
    */
   async getCustomers(): Promise<ServiceResponse<ICustomer[]>> {
+    
     const customers = await this.customerModel.findAll({
       include: [
       {

@@ -44,6 +44,10 @@ SequelizeOrder.init({
     type: DataTypes.INTEGER,
     allowNull: false,
     field: 'customer_id',
+    references: {
+      model: 'customers',
+      key: 'id',
+    },
   },
   status: {
     type: DataTypes.STRING,

@@ -1,0 +1,36 @@
+###
+GET http://localhost:3001/order
+Content-Type: application/json
+
+
+###
+POST http://localhost:3001/order
+Content-Type: application/json
+
+{
+    "orderDate": "2021-01-01",
+    "shippedDate": "2021-01-02",
+    "customerId": 1,
+    "status": "pending",
+    "orderItems": [
+        {
+            "name": "item1",
+            "productId": 100,
+            "quantity": 1,
+            "price": 100,
+            "totalPrice": 100
+        },
+        {
+            "name": "item2",
+            "productId": 101,
+            "quantity": 2,
+            "price": 200,
+            "totalPrice": 400
+        }
+    ]
+}
+
+
+###
+GET http://localhost:3001/order/1
+Content-Type: application/json

@@ -2,7 +2,7 @@ import { QueryInterface, DataTypes } from 'sequelize';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable('order_items', {
+    return queryInterface.createTable('items', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -36,6 +36,6 @@ export default {
   },
 
   down(queryInterface: QueryInterface) {
-    return queryInterface.dropTable('order_items');
+    return queryInterface.dropTable('items');
   }
 };
