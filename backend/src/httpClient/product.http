@@ -3,7 +3,7 @@
 GET http://localhost:3001/product
 
 ### Get product by id
-GET http://localhost:3001/product/4
+GET http://localhost:3001/product/2
 
 
 ### Create product
