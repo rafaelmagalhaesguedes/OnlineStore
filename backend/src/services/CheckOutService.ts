@@ -1,4 +1,4 @@
-import { ICheckOutBody, ICheckOutURL } from '../interfaces/CheckOut/ICheckOut';
+import { ICheckOutBody, ICheckOutURL } from '../interfaces/ICheckOut';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET as string);

@@ -1,19 +1,20 @@
-import { IProductModel } from '../interfaces/Product/IProductModel';
 import { ServiceResponse } from '../interfaces/ServiceResponse';
-import { IProduct } from '../interfaces/Product/IProduct';
+import { IProduct } from '../interfaces/IProduct';
+import { ProductModel } from '../models/ProductModel';
 
 /**
  * ProductService
  * 
  * @export
  * @class ProductService
+ * @param {ProductModel} productModel
  */
 export class ProductService {
 
   /**
    * Creates an instance of ProductService.
    */
-  constructor(private productModel: IProductModel) {}
+  constructor(private productModel: ProductModel) {}
 
 
   /**
