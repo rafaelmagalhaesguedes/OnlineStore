@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
 import productService from '../../services/ApiService';
 import { CartContext } from '../../context/CartContext';
 import { Card, CardProducts, HomeContainer } from './Style';
+import { ProductCard } from '../../components/ProductCard/ProductCard';
 
 export function Home() {
   const { products, setProducts } = useContext(CartContext);
