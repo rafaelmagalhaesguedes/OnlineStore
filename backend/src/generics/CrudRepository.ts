@@ -1,3 +1,5 @@
+import { Transaction } from 'sequelize';
+
 /**
  * Interface for CRUD operations
  */
@@ -49,9 +51,18 @@ export class CrudRepository<T> implements ICrudModel<T> {
   }
 
   async create(item: T): Promise<T | null> {
-    const newItem = await this.model.create(item);
+    let transaction: Transaction;
 
-    if (!newItem) return null;
+    transaction = await this.model.sequelize.transaction();
+
+    const newItem = await this.model.create(item, { transaction });
+
+    if (!newItem) {
+      await transaction.rollback();
+      return null;
+    }
+
+    await transaction.commit();
 
     return newItem.dataValues;
   }
