@@ -154,6 +154,24 @@ export class OrderService {
   }
 
 
+  async updateOrderStatus(customerId: number, status: string): Promise<ServiceResponse<IOrder>> {
+      
+    const order = await this.orderModel.findOne({ where: { customerId } });
+  
+    if (!order) {
+      return { status: 'NOT_FOUND', data: { message: 'Order not found' } };
+    }
+  
+    const updatedOrder = await this.orderModel.update(order.id, { ...order, status } as IOrder);
+  
+    if (updatedOrder === null) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'Order not updated' } };
+    }
+  
+    return { status: 'SUCCESSFUL', data: updatedOrder };
+  }
+
+
   /**
    * Delete an order
    * 

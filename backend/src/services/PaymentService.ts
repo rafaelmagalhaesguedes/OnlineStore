@@ -1,12 +1,9 @@
 import Stripe from 'stripe';
-import { ICheckOutURL } from '../interfaces/ICheckOut';
 import { IOrder } from '../interfaces/IOrder';
-import { OrderModel } from '../models/OrderModel';
 import { OrderService } from './OrderService';
-import { UserModel } from '../models/UserModel';
+import { ICheckOutURL } from '../interfaces/ICheckOut';
 import { CustomerModel } from '../models/CustomerModel';
 import { ServiceResponse } from '../interfaces/ServiceResponse';
-import { OrderItem } from 'sequelize';
 
 // Create a new instance of Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET as string);
@@ -83,18 +80,29 @@ export class PaymentService {
    * 
    * @param {Stripe.Event} event
    */
-  async handleStripeWebhook(event: Stripe.Event) {
+  async handleStripeWebhooks(sig: string[], event: Stripe.Event) {
+    const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
     const session = event.data.object as Stripe.Checkout.Session;
 
-    if (session.payment_status === 'paid') {
-      const order = await this.orderService.updateOrder(
-        session.client_reference_id as any, { status: 'Paid' } as IOrder,
-      );
+    let stripeEvent: Stripe.Event;
 
-      if (!order) {
-        console.log('Order not found');
-      }
+    try {
+      stripeEvent = stripe.webhooks.constructEvent(String(event), sig, endpointSecret);
+    } catch (err) {
+      return { status: 'BAD_REQUEST', data: { message: 'Invalid payload' } };
     }
+
+    if (stripeEvent.type === 'checkout.session.completed') {
+      const customer = await this.customerModel.findOne({ where: { userId: session.client_reference_id } });
+
+      if (!customer) {
+        return { status: 'NOT_FOUND', data: { message: 'Customer not found' } };
+      }
+
+      await this.orderService.updateOrderStatus(customer.id, 'Paid');
+    }
+
+    return { status: 'SUCCESSFUL', data: { message: 'Webhook received' } };
   }
-  
+
 }

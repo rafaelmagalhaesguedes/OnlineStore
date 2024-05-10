@@ -14,4 +14,19 @@ export class PaymentController {
 
     return res.status(statusCode(status)).json(data);
   }
+
+
+  /**
+   * Handle Stripe webhook
+   * 
+   * @param {Request} req
+   * @param {Response} res
+   */
+  async handleStripeWebhook(req: Request, res: Response) {
+    const sig = req.headers['stripe-signature'] as string[];
+
+    const { status, data } = await this.paymentService.handleStripeWebhooks(sig, req.body);
+
+    return res.status(statusCode(status)).json(data);
+  }
 }

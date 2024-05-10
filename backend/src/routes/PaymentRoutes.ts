@@ -1,3 +1,4 @@
+import * as express from 'express';
 import { Request, Router, Response } from 'express';
 import { OrderModel } from '../models/OrderModel';
 import { OrderItemModel } from '../models/OrderItemModel';
@@ -27,6 +28,12 @@ class PaymentRoutes {
     this.router.post(
       '/',
       (req: Request, res: Response) => this.paymentController.createStripeSession(req, res),
+    );
+
+    this.router.post(
+      '/webhook',
+      express.raw({type: 'application/json'}),
+      (req: Request, res: Response) => this.paymentController.handleStripeWebhook(req, res),
     );
   }
 }
