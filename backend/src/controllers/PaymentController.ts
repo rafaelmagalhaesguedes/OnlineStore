@@ -2,10 +2,26 @@ import { Request, Response } from 'express';
 import { PaymentService } from '../services/PaymentService';
 import { statusCode } from '../utils/httpStatusCodeMap';
 
+/**
+ * Payment Controller
+ * 
+ * @export
+ * @class PaymentController
+ */
 export class PaymentController {
 
+  /**
+   * Creates an instance of PaymentController.
+   */
   constructor(private paymentService: PaymentService) {}
 
+
+  /**
+   * Create a new Stripe session
+   * 
+   * @param {Request} req
+   * @param {Response} res
+   */
   async createStripeSession(req: Request, res: Response): Promise<Response> {
     const userId = 2;
     const { order, orderItems } = req.body;
