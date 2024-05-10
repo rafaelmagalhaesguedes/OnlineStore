@@ -1,0 +1,25 @@
+###
+POST http://localhost:3001/payment
+Content-Type: application/json
+
+{
+    "orderDate": "2021-01-01",
+    "shippedDate": "2021-01-02",
+    "status": "pending",
+    "orderItems": [
+        {
+            "name": "item1",
+            "productId": 100,
+            "quantity": 1,
+            "price": 100,
+            "totalPrice": 100
+        },
+        {
+            "name": "item2",
+            "productId": 101,
+            "quantity": 2,
+            "price": 200,
+            "totalPrice": 400
+        }
+    ]
+}

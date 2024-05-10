@@ -53,6 +53,15 @@ export class OrderService {
     const orders = await this.orderModel.findAll({
       include: [
       {
+        association: 'customer',
+        as: 'customer',
+        include: [
+        {
+          association: 'addresses',
+          as: 'addresses'
+        }]
+      },
+      {
         association: 'items',
         as: 'items'
       }]

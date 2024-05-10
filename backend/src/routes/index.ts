@@ -4,7 +4,7 @@ import AuthRoutes from './AuthRoutes';
 import OrderRoutes from './OrderRoutes';
 import ProductRoutes from './ProductRoutes';
 import CustomerRoutes from './CustomerRoutes';
-import CheckOutRoutes from './CheckOutRoutes';
+import PaymentRoutes from './PaymentRoutes';
 
 /**
  * MainRoutes
@@ -27,6 +27,6 @@ export class MainRoutes {
     this.router.use('/order', OrderRoutes);
     this.router.use('/product', ProductRoutes);
     this.router.use('/customer', CustomerRoutes);
-    this.router.use('/checkout', CheckOutRoutes);
+    this.router.use('/payment', PaymentRoutes);
   }
 }
