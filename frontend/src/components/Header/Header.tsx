@@ -1,9 +1,11 @@
-import {Button, Navbar, Modal} from 'react-bootstrap';
+import { Button, Navbar, Modal} from 'react-bootstrap';
 import { useState, useContext } from 'react';
-import { CartContext } from '../context/CartContext';
-import { CartProduct } from './CartProduct';
 import { FaBoxOpen, FaShoppingCart } from 'react-icons/fa';
-import productService from '../services/ApiService';
+import { CartContext } from '../../context/CartContext';
+import productService from '../../services/ApiService';
+import { CartProduct } from '../CartProduct';
+import logo from '../../assets/images/icons/logo.svg';
+import { CardButton, HeaderContainer, HeaderNavbar, NavbarBrand, NavbarCollapse, NavbarText } from './Style';
 
 export function Header() {
   const cart = useContext(CartContext);
@@ -28,25 +30,26 @@ export function Header() {
     .reduce((sum, product) => sum + (product.quantity ?? 0), 0);
 
   return (
-    <>
-      <Navbar expand="sm" bg="dark" variant="dark" className="p-3">
-        <Navbar.Brand href="/" style={ { display: 'flex', alignItems: 'center', gap: '0.5rem'} }>
-          <h2>Simple Store</h2>
-        </Navbar.Brand>
+    <HeaderContainer>
+      <HeaderNavbar>
+        <NavbarBrand>
+          <img src={ logo } alt="Cell Store" />
+          <h2>Cell Store</h2>
+        </NavbarBrand>
         <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Button variant="primary" onClick={ handleShow } style={ { display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <FaShoppingCart size={ 30 } /> My Cart
-            ({ productsCount })
-          </Button>
-          <Navbar.Text>
-            <a href="/login" style={ { fontWeight: '500', color: 'white', marginLeft: '3rem', textDecoration: 'none' } }>Login</a>
-          </Navbar.Text>
-          <Navbar.Text>
-            <a href="/register" style={ { fontWeight: '500', color: 'white', marginLeft: '1rem', textDecoration: 'none' } }>Register</a>
-          </Navbar.Text>
-        </Navbar.Collapse>
-      </Navbar>
+        <NavbarCollapse>
+          <NavbarText>
+            <a href="/login">Login</a>
+          </NavbarText>
+          <NavbarText>
+            <a href="/register">Register</a>
+          </NavbarText>
+          <CardButton onClick={ handleShow }>
+            <FaShoppingCart size={ 25 } />
+            <span>{ productsCount }</span>
+          </CardButton>
+        </NavbarCollapse>
+      </HeaderNavbar>
 
       <Modal show={ show } onHide={ handleClose }>
           
@@ -77,6 +80,6 @@ export function Header() {
         </Modal.Body>
 
       </Modal>
-    </>
+    </HeaderContainer>
   )
 }
