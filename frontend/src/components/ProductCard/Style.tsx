@@ -9,13 +9,21 @@ export const ProductCardContainer = styled.div`
   border-radius: 8px;
   background-color: #fff;
 
-  width: 200px;
+  width: 220px;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
-export const CardImg = styled.img`
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
+export const CardImg = styled.div`
+  width: 220px;
+  height: 280px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const CardBody = styled.div`
@@ -27,8 +35,10 @@ export const CardBody = styled.div`
 
 export const CardTitle = styled.h3`
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   padding: 0 1rem;
+
+  color: #333;
 `;
 
 export const CardText = styled.p`
@@ -44,22 +54,11 @@ export const CardText = styled.p`
   span {
     font-weight: 600;
     font-size: 1.5rem;
+    color: #333;
   }
 
   p {
     margin-top: 0.5rem;
     font-size: 0.9rem;
   }
-`;
-
-export const Button = styled.button`
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #000;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
 `;
