@@ -70,9 +70,16 @@ export const CardButton = styled.button`
 
   span {
     color: white;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 0.9rem;
 
     position: relative;
     top: -1rem;
+
+    background-color: #fff;
+    color: #000;
+    border-radius: 100%;
+
+    width: 2rem;
   }
 `;

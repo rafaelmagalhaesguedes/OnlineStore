@@ -16,7 +16,7 @@ export const CardProducts = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 1rem;
+  gap: 2rem;
 
   width: 100%;
 `;
@@ -27,7 +27,7 @@ export const Card = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   border-radius: 8px;
   background-color: #fff;
 `;
