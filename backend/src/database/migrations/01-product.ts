@@ -9,6 +9,10 @@ export default {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
+      brand: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,6 +25,10 @@ export default {
         type: DataTypes.STRING,
         allowNull: false,
         field: 'price_id',
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
       },
       quantity: {
         type: DataTypes.INTEGER,

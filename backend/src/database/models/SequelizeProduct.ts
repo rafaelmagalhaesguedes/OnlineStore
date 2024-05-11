@@ -13,11 +13,15 @@ class SequelizeProduct extends Model<InferAttributes<SequelizeProduct>,
   //
   declare id: CreationOptional<number>;
 
+  declare brand: string;
+
   declare name: string;
 
   declare price: string;
 
   declare priceId: string;
+
+  declare description: string;
 
   declare quantity: number;
 
@@ -31,6 +35,10 @@ SequelizeProduct.init({
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
+  brand: {
+    allowNull: false,
+    type: DataTypes.STRING,
+  },
   name: {
     allowNull: false,
     type: DataTypes.STRING,
@@ -43,6 +51,10 @@ SequelizeProduct.init({
     allowNull: false,
     field: 'price_id',
     type: DataTypes.STRING,
+  },
+  description: {
+    allowNull: false,
+    type: DataTypes.TEXT,
   },
   quantity: {
     allowNull: false,
