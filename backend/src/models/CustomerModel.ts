@@ -1,6 +1,6 @@
+import { Customer } from '../database/models/Customer';
 import { ICustomer } from '../interfaces/ICustomer';
 import { CrudRepository } from '../generics/CrudRepository';
-import { SequelizeCustomer } from '../database/models/SequelizeCustomer';
 
 /**
  * CustomerModel
@@ -11,6 +11,6 @@ import { SequelizeCustomer } from '../database/models/SequelizeCustomer';
  */
 export class CustomerModel extends CrudRepository<ICustomer> {
   constructor() {
-    super(SequelizeCustomer);
+    super(Customer);
   }
 }

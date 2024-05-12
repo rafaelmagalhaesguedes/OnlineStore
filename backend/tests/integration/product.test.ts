@@ -3,7 +3,7 @@ import * as sinon from 'sinon';
 import chaiHttp = require('chai-http');
 import { app } from '../../src/app';
 import { productMock } from '../mocks/product.mock';
-import { SequelizeProduct } from '../../src/database/models/SequelizeProduct';
+import { Product } from '../../src/database/models/Product';
 
 const { expect } = chai;
 
@@ -17,7 +17,7 @@ describe('Integration testing for Products', () => {
   describe('Get All Products', () => {
     it('should return all products', async () => {
       // arrange
-      sinon.stub(SequelizeProduct, 'findAll').resolves(productMock as any);
+      sinon.stub(Product, 'findAll').resolves(productMock as any);
 
       // act
       const { status, body } = await chai.request(app).get('/product');
@@ -33,7 +33,7 @@ describe('Integration testing for Products', () => {
   describe('Get Product By Id', () => {
     it('should return a product by id', async () => {
       // arrange
-      sinon.stub(SequelizeProduct, 'findOne').resolves(productMock[0] as any);
+      sinon.stub(Product, 'findOne').resolves(productMock[0] as any);
 
       // act    
       const { status, body } = await chai.request(app).get('/product/1');
@@ -46,7 +46,7 @@ describe('Integration testing for Products', () => {
 
     it('should return 404 if product not found', async () => {
       // arrange
-      sinon.stub(SequelizeProduct, 'findOne').resolves(null);
+      sinon.stub(Product, 'findOne').resolves(null);
 
       // act
       const { status, body } = await chai.request(app).get('/product/4');
@@ -70,9 +70,9 @@ describe('Integration testing for Products', () => {
         image: 'https://http2.mlstatic.com/D_NQ_NP_778864-MLA70971122056_082023-O.webp',
       };
 
-      const mockReturn = SequelizeProduct.build(newProduct as any);
-      sinon.stub(SequelizeProduct, 'findOne').resolves(null);
-      sinon.stub(SequelizeProduct, 'create').resolves(mockReturn);
+      const mockReturn = Product.build(newProduct as any);
+      sinon.stub(Product, 'findOne').resolves(null);
+      sinon.stub(Product, 'create').resolves(mockReturn);
 
       // act
       const { status, body } = await chai.request(app).post('/product').send(newProduct);
@@ -98,8 +98,8 @@ describe('Integration testing for Products', () => {
         image: 'https://http2.mlstatic.com/D_NQ_NP_778864-MLA70971122056_082023-O.webp',
       };
 
-      sinon.stub(SequelizeProduct, 'findOne').resolves(null);
-      sinon.stub(SequelizeProduct, 'create').resolves(null as any);
+      sinon.stub(Product, 'findOne').resolves(null);
+      sinon.stub(Product, 'create').resolves(null as any);
 
       // act
       const { status, body } = await chai.request(app).post('/product').send(newProduct);
@@ -123,9 +123,9 @@ describe('Integration testing for Products', () => {
         image: 'https://http2.mlstatic.com/D_NQ_NP_778864-MLA70971122056_082023-O.webp',
       };
 
-      const mockReturn = SequelizeProduct.build(updatedProduct as any);
-      sinon.stub(SequelizeProduct, 'findOne').resolves(mockReturn);
-      sinon.stub(SequelizeProduct, 'update').resolves([mockReturn] as any);
+      const mockReturn = Product.build(updatedProduct as any);
+      sinon.stub(Product, 'findOne').resolves(mockReturn);
+      sinon.stub(Product, 'update').resolves([mockReturn] as any);
 
       // act
       const { status, body } = await chai.request(app).put('/product/1').send(updatedProduct);
@@ -151,7 +151,7 @@ describe('Integration testing for Products', () => {
         image: 'https://http2.mlstatic.com/D_NQ_NP_778864-MLA70971122056_082023-O.webp',
       };
 
-      sinon.stub(SequelizeProduct, 'findOne').resolves(null);
+      sinon.stub(Product, 'findOne').resolves(null);
 
       // act
       const { status, body } = await chai.request(app).put('/product/4').send(updatedProduct);
@@ -167,9 +167,9 @@ describe('Integration testing for Products', () => {
   describe('Delete Product', () => {
     it('should delete a product', async () => {
       // arrange
-      const mockReturn = SequelizeProduct.build(productMock[0] as any);
-      sinon.stub(SequelizeProduct, 'findOne').resolves(mockReturn);
-      sinon.stub(SequelizeProduct, 'destroy').resolves(true as any);
+      const mockReturn = Product.build(productMock[0] as any);
+      sinon.stub(Product, 'findOne').resolves(mockReturn);
+      sinon.stub(Product, 'destroy').resolves(true as any);
 
       // act
       const { status, body } = await chai.request(app).delete('/product/1');
@@ -182,7 +182,7 @@ describe('Integration testing for Products', () => {
 
     it('should return 404 if product not found', async () => {
       // arrange
-      sinon.stub(SequelizeProduct, 'findOne').resolves(null);
+      sinon.stub(Product, 'findOne').resolves(null);
 
       // act
       const { status, body } = await chai.request(app).delete('/product/4');

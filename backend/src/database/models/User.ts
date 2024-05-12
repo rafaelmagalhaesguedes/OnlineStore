@@ -8,10 +8,10 @@ import {
 } from 'sequelize';
 import db from '.';
 import * as bcrypt from 'bcryptjs';
-import { SequelizeCustomer } from './SequelizeCustomer';
+import { Customer } from './Customer';
 
-class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
-  InferCreationAttributes<SequelizeUser>> {
+class User extends Model<InferAttributes<User>,
+  InferCreationAttributes<User>> {
   //
   declare id: CreationOptional<number>;
 
@@ -26,7 +26,7 @@ class SequelizeUser extends Model<InferAttributes<SequelizeUser>,
   declare image: string;
 }
 
-SequelizeUser.init({
+User.init({
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -72,14 +72,14 @@ SequelizeUser.init({
   },
 });
 
-SequelizeUser.hasOne(SequelizeCustomer, {
+User.hasOne(Customer, {
   foreignKey: 'userId',
   as: 'customer',
 });
 
-SequelizeCustomer.belongsTo(SequelizeUser, {
+Customer.belongsTo(User, {
   foreignKey: 'userId',
   as: 'user',
 });
 
-export { SequelizeUser };
+export { User };

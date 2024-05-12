@@ -1,6 +1,6 @@
-import { SequelizeProduct } from '../database/models/SequelizeProduct';
-import { CrudRepository } from '../generics/CrudRepository';
+import { Product } from '../database/models/Product';
 import { IProduct } from '../interfaces/IProduct';
+import { CrudRepository } from '../generics/CrudRepository';
 
 /**
  * ProductModel
@@ -11,6 +11,6 @@ import { IProduct } from '../interfaces/IProduct';
  */
 export class ProductModel extends CrudRepository<IProduct> {
   constructor() {
-    super(SequelizeProduct);
+    super(Product);
   }
 }

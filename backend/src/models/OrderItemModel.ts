@@ -1,6 +1,6 @@
+import { OrderItem } from '../database/models/OrderItem';
 import { IOrderItem } from '../interfaces/IOrderItem';
 import { CrudRepository } from '../generics/CrudRepository';
-import { SequelizeOrderItem } from '../database/models/SequelizeOrderItem';
 
 /**
  * OrderItemModel
@@ -11,6 +11,6 @@ import { SequelizeOrderItem } from '../database/models/SequelizeOrderItem';
  */
 export class OrderItemModel extends CrudRepository<IOrderItem> {
   constructor() {
-    super(SequelizeOrderItem);
+    super(OrderItem);
   }
 }

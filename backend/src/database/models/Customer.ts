@@ -6,11 +6,11 @@ import {
   CreationOptional,
 } from 'sequelize';
 import db from '.';
-import { SequelizeAddress } from './SequelizeAddress';
-import { SequelizeOrder } from './SequelizeOrder';
+import { Address } from './Address';
+import { Order } from './Order';
 
-class SequelizeCustomer extends Model<InferAttributes<SequelizeCustomer>,
-InferCreationAttributes<SequelizeCustomer>> {
+class Customer extends Model<InferAttributes<Customer>,
+InferCreationAttributes<Customer>> {
   //
   declare id: CreationOptional<number>;
 
@@ -21,7 +21,7 @@ InferCreationAttributes<SequelizeCustomer>> {
   declare secondaryEmail: string;
 }
 
-SequelizeCustomer.init({
+Customer.init({
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -53,24 +53,24 @@ SequelizeCustomer.init({
 });
 
 
-SequelizeCustomer.hasMany(SequelizeAddress, {
+Customer.hasMany(Address, {
   foreignKey: 'customerId',
   as: 'addresses',
 });
 
-SequelizeAddress.belongsTo(SequelizeCustomer, {
+Address.belongsTo(Customer, {
   foreignKey: 'customerId',
   as: 'customer',
 });
 
-SequelizeCustomer.hasMany(SequelizeOrder, {
+Customer.hasMany(Order, {
   foreignKey: 'customerId',
   as: 'orders',
 });
 
-SequelizeOrder.belongsTo(SequelizeCustomer, {
+Order.belongsTo(Customer, {
   foreignKey: 'customerId',
   as: 'customer',
 });
 
-export { SequelizeCustomer };
+export { Customer };

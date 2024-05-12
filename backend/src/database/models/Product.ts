@@ -8,8 +8,8 @@ import {
 } from 'sequelize';
 import db from '.';
 
-class SequelizeProduct extends Model<InferAttributes<SequelizeProduct>,
-  InferCreationAttributes<SequelizeProduct>> {
+class Product extends Model<InferAttributes<Product>,
+  InferCreationAttributes<Product>> {
   //
   declare id: CreationOptional<number>;
 
@@ -28,7 +28,7 @@ class SequelizeProduct extends Model<InferAttributes<SequelizeProduct>,
   declare image: string;
 }
 
-SequelizeProduct.init({
+Product.init({
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -71,4 +71,4 @@ SequelizeProduct.init({
   underscored: true,
 });
 
-export { SequelizeProduct };
+export { Product };

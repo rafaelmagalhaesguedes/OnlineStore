@@ -1,4 +1,4 @@
-import { SequelizeUser } from '../database/models/SequelizeUser';
+import { User } from '../database/models/User';
 import { CrudRepository } from '../generics/CrudRepository';
 import { IUser, IUserResponse } from '../interfaces/IUser';
 
@@ -12,11 +12,11 @@ import { IUser, IUserResponse } from '../interfaces/IUser';
 export class UserModel extends CrudRepository<IUser> {
   
   constructor() {
-    super(SequelizeUser);
+    super(User);
   }
 
   async findByEmail(email: IUser['email']): Promise<IUser | null> {
-    const user = await SequelizeUser.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email } });
 
     if (!user) return null;
 
@@ -24,7 +24,7 @@ export class UserModel extends CrudRepository<IUser> {
   }
 
   async updatePassword(id: IUser['id'], password: IUser['password']): Promise<IUserResponse | null> {
-    const user = await SequelizeUser.update({ password }, { where: { id } });
+    const user = await User.update({ password }, { where: { id } });
 
     if (!user) return null;
 

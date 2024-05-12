@@ -7,8 +7,8 @@ import {
 } from 'sequelize';
 import db from '.';
 
-class SequelizeAddress extends Model<InferAttributes<SequelizeAddress>,
-InferCreationAttributes<SequelizeAddress>> {
+class Address extends Model<InferAttributes<Address>,
+InferCreationAttributes<Address>> {
   //
   declare id: CreationOptional<number>;
 
@@ -29,7 +29,7 @@ InferCreationAttributes<SequelizeAddress>> {
   declare zip: string;
 }
 
-SequelizeAddress.init({
+Address.init({
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -74,4 +74,4 @@ SequelizeAddress.init({
   underscored: true,
 });
 
-export { SequelizeAddress };
+export { Address };

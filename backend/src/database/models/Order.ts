@@ -7,10 +7,10 @@ import {
   CreationOptional,
 } from 'sequelize';
 import db from '.';
-import { SequelizeOrderItem } from './SequelizeOrderItem';
+import { OrderItem } from './OrderItem';
 
-class SequelizeOrder extends Model<InferAttributes<SequelizeOrder>,
-  InferCreationAttributes<SequelizeOrder>> {
+class Order extends Model<InferAttributes<Order>,
+  InferCreationAttributes<Order>> {
   //
   declare id: CreationOptional<number>;
 
@@ -23,7 +23,7 @@ class SequelizeOrder extends Model<InferAttributes<SequelizeOrder>,
   declare status: string;
 }
 
-SequelizeOrder.init({
+Order.init({
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -60,14 +60,14 @@ SequelizeOrder.init({
   underscored: true,
 });
 
-SequelizeOrder.hasMany(SequelizeOrderItem, {
+Order.hasMany(OrderItem, {
   foreignKey: 'orderId',
   as: 'items',
 });
 
-SequelizeOrderItem.belongsTo(SequelizeOrder, {
+OrderItem.belongsTo(Order, {
   foreignKey: 'orderId',
   as: 'order',
 });
 
-export { SequelizeOrder };
+export { Order };
