@@ -25,6 +25,13 @@ export const NavbarBrand = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
   
   img {
     width: 50px;
