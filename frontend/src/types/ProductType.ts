@@ -6,5 +6,5 @@ export type ProductType = {
   priceId: string;
   description: string;
   image: string;
-  quantity?: number | undefined;
+  quantity: number;
 };
