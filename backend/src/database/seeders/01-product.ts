@@ -29,7 +29,7 @@ export default {
         description: 'O Xiaomi Redmi 12 é um smartphone com um ótimo custo-benefício e câmeras de alta qualidade.',
         quantity: 20,
         image: 'https://http2.mlstatic.com/D_NQ_NP_778864-MLA70971122056_082023-O.webp',
-      },
+      },/* 
       {
         name: 'Galaxy A15',
         brand: 'Samsung',
@@ -74,7 +74,7 @@ export default {
         description: 'O iPhone 14 é o mais novo lançamento da Apple, com um design inovador e câmeras de alta qualidade.',
         quantity: 50,
         image: 'https://http2.mlstatic.com/D_NQ_NP_766596-MLA74805959311_022024-O.webp',
-      },
+      }, */
     ], {});
   },
 

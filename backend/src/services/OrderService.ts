@@ -2,7 +2,7 @@ import { ServiceMessage, ServiceResponse } from '../interfaces/ServiceResponse';
 import { OrderItemModel } from '../models/OrderItemModel';
 import { IOrderItem } from '../interfaces/IOrderItem';
 import { OrderModel } from '../models/OrderModel';
-import { IOrder } from '../interfaces/IOrder';
+import { IOrder, IOrderCreate } from '../interfaces/IOrder';
 
 /**
  * Order Service
@@ -34,10 +34,18 @@ export class OrderService {
       return { status: 'INTERNAL_ERROR', data: { message: 'Order not created' } };
     }
 
+    console.log('Order created', newOrder);
+
     orderItems.forEach(async (orderItem) => {
       orderItem.orderId = newOrder.id;
       await this.orderItemModel.create(orderItem);
     });
+
+    if (!orderItems) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'Order Items not created' } };
+    }
+
+    console.log('Order Item created', orderItems);
     
     return { status: 'SUCCESSFUL', data: newOrder };
   }

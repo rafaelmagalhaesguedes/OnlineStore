@@ -24,9 +24,9 @@ export class PaymentController {
    */
   async createStripeSession(req: Request, res: Response): Promise<Response> {
     const userId = 2;
-    const { order, orderItems } = req.body;
+    const { items } = req.body;
 
-    const { status, data } = await this.paymentService.createStripeSession(userId, order, orderItems);
+    const { status, data } = await this.paymentService.createStripeSession(userId, items);
 
     return res.status(statusCode(status)).json(data);
   }

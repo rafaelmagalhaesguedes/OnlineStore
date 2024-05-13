@@ -1,5 +1,4 @@
 import Stripe from 'stripe';
-import { IOrder } from '../interfaces/IOrder';
 import { OrderService } from './OrderService';
 import { ICheckOutURL } from '../interfaces/ICheckOut';
 import { CustomerModel } from '../models/CustomerModel';
@@ -7,7 +6,6 @@ import { ServiceResponse } from '../interfaces/ServiceResponse';
 
 // Create a new instance of Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET as string);
-
 
 /**
  * Payment Service
@@ -29,10 +27,11 @@ export class PaymentService {
    * @param {ICheckOutBody[]} items
    * @returns {Promise<ICheckOutURL>}
    */
-  async createStripeSession(userId: number, order: IOrder, items: any[]):
-  Promise<ServiceResponse<ICheckOutURL>> {
+  async createStripeSession(userId: number, items: any[]): Promise<ServiceResponse<ICheckOutURL>> {
 
     const customer = await this.customerModel.findOne({ where: { userId } });
+
+    console.log(items);
 
     if (!customer) {
       return { status: 'NOT_FOUND', data: { message: 'Customer not found' } };
@@ -42,14 +41,6 @@ export class PaymentService {
 
     items.forEach((item) => {
       lineItems.push({
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: item.name,
-            images: [item.image],
-          },
-          unit_amount: item.price * 100,
-        },
         price: item.priceId,
         quantity: item.quantity,
       });
@@ -64,12 +55,32 @@ export class PaymentService {
       cancel_url: "http://localhost:5173/cancel",
     });
 
-    if (session) {
-      await this.orderService.createOrder(
-        { ...order, orderDate: new Date(), customerId: customer.id, status: 'Pending' }, items,
-      );
-      console.log('Order created');
+    if (!session) {
+      return { status: 'INTERNAL_ERROR', data: { message: 'Session not created' } };
     }
+
+    // Ship the order 5 days from now
+    let shippedDate = new Date();
+
+    const order: any = {
+      shippedDate: shippedDate.setDate(shippedDate.getDate() + 5), // 5 days from now
+      orderDate: new Date(),
+      customerId: customer.id,
+      status: 'Pending',
+    };
+
+    const addItem: any[] = [];
+
+    items.forEach((item) => {
+      addItem.push({
+        productId: item.id,
+        quantity: item.quantity,
+        price: item.price,
+        totalPrice: item.quantity * item.price,
+      });
+    });
+
+    await this.orderService.createOrder(order, addItem);
 
     return { status: 'SUCCESSFUL', data: { url: session.url } as ICheckOutURL };
   }
