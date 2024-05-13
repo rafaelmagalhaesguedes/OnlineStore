@@ -25,7 +25,7 @@ class ProductService {
 
   async checkout(items: ProductType[]) {
     try {
-      const response = await this.api.post('/checkout', { items });
+      const response = await this.api.post('/payment', { items });
       return response.data;
     } catch (error) {
       console.error('Failed to checkout', error);
