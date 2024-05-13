@@ -1,10 +1,11 @@
-import { Button, Navbar, Modal} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
+import { Button, Navbar, Modal} from 'react-bootstrap';
 import { FaBoxOpen, FaShoppingCart } from 'react-icons/fa';
+import logo from '../../assets/images/icons/logo.svg';
 import { CartContext } from '../../context/CartContext';
 import productService from '../../services/ApiService';
 import { CartProduct } from '../CartProduct';
-import logo from '../../assets/images/icons/logo.svg';
 import { CardButton, HeaderContainer, HeaderNavbar, NavbarBrand, NavbarCollapse, NavbarText } from './Style';
 
 export function Header() {
@@ -16,6 +17,7 @@ export function Header() {
 
   const checkout = async () => {
     try {
+      console.log(cart.items);
       const response = await productService.checkout(cart.items);
   
       if(response.url) {
@@ -33,8 +35,10 @@ export function Header() {
     <HeaderContainer>
       <HeaderNavbar>
         <NavbarBrand>
-          <img src={ logo } alt="Cell Store" />
-          <h2>Cell Store</h2>
+          <Link to="/">
+            <img src={ logo } alt="Cell Store" />
+            <h2>Cell Store</h2>
+          </Link>
         </NavbarBrand>
         <Navbar.Toggle />
         <NavbarCollapse>
@@ -61,8 +65,8 @@ export function Header() {
           {productsCount > 0 ?
             <>
               <p>Items in your cart:</p>
-              {cart.items.map( (currentProduct, idx) => (
-                <CartProduct key={ idx } id={ currentProduct.id } quantity={ currentProduct.quantity }></CartProduct>
+              {cart.items.map( (currentProduct) => (
+                <CartProduct key={ currentProduct.id } product={ currentProduct }></CartProduct>
               ))}
 
               <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
