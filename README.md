@@ -1,49 +1,31 @@
-<div align="center">
+<div>
 
-# Simple Store With Stripe Payment Gateway
+# App Store With Stripe Payment Gateway
 
 <br />
 
 ![Home](./screenshots/1.png)
 
-
-### A simple online cell phone store using stripe as a payment gateway.
-
 </div>
+Este é um projeto de loja online de celulares simples, desenvolvido como parte de um exercício prático de aplicação de conceitos de desenvolvimento web e integração de pagamentos.
 
-<br />
+## Recursos Principais:
 
-# Tecnologies
+- Interface Amigável: Uma interface de usuário intuitiva e responsiva, projetada para facilitar a navegação e a compra de celulares.
 
-### Frontend
+- Integração com o Stripe: Utilizamos o Stripe como gateway de pagamento para garantir transações seguras e eficientes.
 
-- Vite
-- React.js
-- TypeScript
-- Bootstrap
+- Variedade de Produtos: Oferecemos uma ampla seleção de smartphones de diversas marcas e modelos para atender às necessidades de todos os clientes.
 
-### Backend
+- Suporte ao Cliente: Nossa equipe de suporte está disponível para ajudar os clientes com qualquer dúvida ou problema relacionado às compras.
 
-- Node.js
-- Express
-- TypeScript
-- Stripe
+## Tecnologias Utilizadas:
 
-<br />
+- HTML5, CSS3 e JavaScript para a construção da interface do usuário.
 
-## Run Project
+- Integração do Stripe para processamento de pagamentos seguros.
 
-1. clone project
-
-2. cd project
-
-3. npm run install:apps
-
-4. npm run compose:up
-
-5. npm run dev
-
-<br />
+- Tecnologias de backend (Node.js, Express, etc.) para gerenciamento de pedidos e integração com o Stripe.
 
 ## ScreenShots
 
