@@ -50,7 +50,7 @@ STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 ```
 ## Construindo e executando o backend e banco de dados com Docker
-1. Navegue até o diretório raiz do projeto.
+1. Navegue até o diretório raiz do backend.
 2. Execute o comando abaixo para construir e iniciar os contêineres Docker:
 ```
 docker compose up -d --build
