@@ -26,13 +26,15 @@ Este projeto é uma aplicação de loja online que utiliza TypeScript, Node.js, 
 
 ## Pré-requisitos
 
-Antes de começar, você precisará ter os seguintes softwares instalados em sua máquina:
+Antes de começar, você precisará ter os seguintes requisitos:
 
 - Docker
 
 - Node.js
 
 - MySQL
+
+- Uma conta na plataforma de pagamentos Stripe
 
 ## Como Executar a Aplicação
 ### Configuração do Banco de Dados
