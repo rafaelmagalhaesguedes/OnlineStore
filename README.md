@@ -1,6 +1,6 @@
 <div>
 
-# App Store With Stripe Payment Gateway
+# Online Store With Stripe Payment Gateway
 
 <br />
 
