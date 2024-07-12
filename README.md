@@ -49,11 +49,24 @@ DB_NAME=onlinestore
 STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 ```
-## Construindo e Executando com Docker
+## Construindo e executando o backend e banco de dados com Docker
 1. Navegue até o diretório raiz do projeto.
 2. Execute o comando abaixo para construir e iniciar os contêineres Docker:
 ```
 docker compose up -d --build
+```
+
+3. Frontend:
+
+- Navegue até o diretório frontend.
+- Instale as dependências:
+```
+npm install
+```
+
+- Inicie o servidor de desenvolvimento:
+```
+npm start
 ```
 
 ## Executando Localmente
@@ -87,8 +100,6 @@ npm install
 ```
 npm start
 ```
-
-O frontend estará disponível em **http://localhost:3001.**
 
 ## Funcionalidades Principais
 
