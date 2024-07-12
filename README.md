@@ -117,6 +117,22 @@ npm start
 - Checkout: Processo de pagamento utilizando Stripe.
 - Perfil do Usuário: Visualização e atualização de informações do usuário e histórico de pedidos.
 
+## Simulando Pagamento
+### Cartões para simulação
+1. Pagamento concluído
+```
+4242 4242 4242 4242
+```
+
+2. Pagamento precisa de autenticação
+```
+4000 0025 0000 3155
+```
+
+3. Pagamento recusado
+```
+4000 0000 0000 9995
+```
 ## ScreenShots
 
 <br />
