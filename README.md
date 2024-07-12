@@ -1,27 +1,110 @@
 <div>
 
-# Online Store With Stripe Payment Gateway
+# Online Store
 
-<br />
+## Visão Geral
 
-![Home](./screenshots/1.png)
+Este projeto é uma aplicação de loja online que utiliza TypeScript, Node.js, React, MySQL com Sequelize, Stripe para pagamentos e Docker para containerização. A aplicação é composta por um backend que gerencia a lógica de negócios e a comunicação com o banco de dados, e um frontend que oferece uma interface de usuário interativa.
 
-</div>
-Este projeto é uma loja online de celulares desenvolvida para aplicar conceitos avançados de desenvolvimento web e integração de pagamentos. A aplicação foi construída utilizando tecnologias modernas.
+## Tecnologias Utilizadas
 
-## Recursos Principais:
+- TypeScript: Usado tanto no frontend quanto no backend para proporcionar um desenvolvimento mais seguro e eficiente.
 
-- Interface Amigável: Uma interface de usuário intuitiva e responsiva, projetada para facilitar a navegação e a compra de celulares.
+- Node.js: Plataforma para construir o backend da aplicação.
 
-- Integração com o Stripe: Utilizamos o Stripe como gateway de pagamento para garantir transações seguras e eficientes.
+- Express.js: Framework para Node.js utilizado para criar a API RESTful.
 
-## Tecnologias Utilizadas:
+- React: Biblioteca JavaScript para construir a interface do usuário no frontend.
 
-- HTML5, CSS3 e JavaScript para a construção da interface do usuário.
+- MySQL: Banco de dados relacional usado para armazenar os dados da aplicação.
 
-- Integração do Stripe para processamento de pagamentos seguros.
+- Sequelize: ORM (Object-Relational Mapping) para interagir com o banco de dados MySQL de maneira mais fácil.
 
-- Tecnologias de backend (Node.js, Express, etc.) para gerenciamento de pedidos e integração com o Stripe.
+- Stripe: Plataforma de pagamento online integrada para gerenciar transações.
+
+- Docker: Ferramenta de containerização para garantir que a aplicação seja executada de forma consistente em diferentes ambientes.
+
+## Pré-requisitos
+
+Antes de começar, você precisará ter os seguintes softwares instalados em sua máquina:
+
+- Docker
+
+- Node.js
+
+- MySQL
+
+## Como Executar a Aplicação
+### Configuração do Banco de Dados
+
+1. Crie um banco de dados MySQL para a aplicação.
+2. Configure as variáveis de ambiente para conectar ao banco de dados no arquivo .env no diretório backend.
+
+Exemplo do arquivo .env:
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=yourpassword
+DB_NAME=onlinestore
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+```
+## Construindo e Executando com Docker
+1. Navegue até o diretório raiz do projeto.
+2. Execute o comando abaixo para construir e iniciar os contêineres Docker:
+```
+docker compose up -d --build
+```
+
+## Executando Localmente
+Se preferir executar localmente sem Docker, siga os passos abaixo:
+
+### 1. Backend:
+
+- Navegue até o diretório backend.
+
+- Instale as dependências:
+```
+npm install
+```
+
+- Inicie o servidor:
+```
+npm start
+```
+
+O servidor backend estará disponível em **http://localhost:3000.**
+
+### 2. Frontend:
+
+- Navegue até o diretório frontend.
+- Instale as dependências:
+```
+npm install
+```
+
+- Inicie o servidor de desenvolvimento:
+```
+npm start
+```
+
+O frontend estará disponível em **http://localhost:3001.**
+
+## Funcionalidades Principais
+
+### Backend
+- Autenticação: Rotas para login, registro, recuperação de senha.
+- Gerenciamento de Usuários: CRUD completo para usuários.
+- Produtos: CRUD completo para produtos.
+- Pedidos: Criação e visualização de pedidos.
+- Pagamentos: Integração com Stripe para gerenciar pagamentos.
+
+### Frontend
+- Home Page: Listagem de produtos disponíveis.
+- Página de Produto: Visualização detalhada de cada produto.
+- Carrinho de Compras: Adicionar, remover e atualizar itens no carrinho.
+- Checkout: Processo de pagamento utilizando Stripe.
+- Perfil do Usuário: Visualização e atualização de informações do usuário e histórico de pedidos.
 
 ## ScreenShots
 
