@@ -7,7 +7,7 @@
 ![Home](./screenshots/1.png)
 
 </div>
-Este é um projeto de loja online de celulares simples, desenvolvido como parte de um exercício prático de aplicação de conceitos de desenvolvimento web e integração de pagamentos.
+Este projeto é uma loja online de celulares desenvolvida como parte de um exercício prático para aplicar conceitos avançados de desenvolvimento web e integração de pagamentos. A aplicação foi construída utilizando tecnologias modernas e melhores práticas do mercado, garantindo uma experiência de usuário fluida e segura.
 
 ## Recursos Principais:
 
