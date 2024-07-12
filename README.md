@@ -86,7 +86,7 @@ npm install
 npm start
 ```
 
-O servidor backend estará disponível em **http://localhost:3000.**
+O servidor backend estará disponível em **http://localhost:3001.**
 
 ### 2. Frontend:
 
