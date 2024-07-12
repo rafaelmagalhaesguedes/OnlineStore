@@ -15,10 +15,6 @@ Este projeto é uma loja online de celulares desenvolvida para aplicar conceitos
 
 - Integração com o Stripe: Utilizamos o Stripe como gateway de pagamento para garantir transações seguras e eficientes.
 
-- Variedade de Produtos: Oferecemos uma ampla seleção de smartphones de diversas marcas e modelos para atender às necessidades de todos os clientes.
-
-- Suporte ao Cliente: Nossa equipe de suporte está disponível para ajudar os clientes com qualquer dúvida ou problema relacionado às compras.
-
 ## Tecnologias Utilizadas:
 
 - HTML5, CSS3 e JavaScript para a construção da interface do usuário.
