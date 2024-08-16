@@ -4,7 +4,7 @@
 
 ## Visão Geral
 
-Este projeto é uma aplicação de loja online que utiliza TypeScript, Node.js, React, MySQL com Sequelize, Stripe para pagamentos e Docker para containerização. A aplicação é composta por um backend que gerencia a lógica de negócios e a comunicação com o banco de dados, e um frontend que oferece uma interface de usuário interativa.
+Aplicação Full Stack de loja online que utiliza TypeScript, Node.js, React, MySQL com Sequelize, Stripe para pagamentos e Docker para containerização. A aplicação é composta por um backend que gerencia a lógica de negócios e a comunicação com o banco de dados, e um frontend que oferece uma interface de usuário interativa.
 
 ## Tecnologias Utilizadas
 
